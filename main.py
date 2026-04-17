@@ -86,5 +86,9 @@ def chat():
             return jsonify({"response": "Whoa, slow down! My brain is overheating. Try again in a sec."}), 429
         return jsonify({"response": "I'm having a minor glitch. Try refreshing!"}), 500
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+
+if __name__ == "__main__":
+    # This line is the magic trick. 
+    # It tells your code: "Use Render's port, or 10000 if you're local."
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host='0.0.0.0', port=port)
